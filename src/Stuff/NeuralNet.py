@@ -8,17 +8,19 @@ class NeuralNet(object):
         self.Biases = [np.random.random((1,col)) for col in array[1:]]
         
     
-    def feedForward(self, input, weight= None, bias = None):
+    def feedForward(self, inputt, weight= None, bias = None):
         if weight is not None:
-            output = input
+            output = inputt
             for w,b in zip(weight,bias):
                 output = sigmoid(np.dot(output,w)+b)
             return output
         else:
-            output = input
+            output = inputt
             for w,b in zip(self.Weights,self.Biases):
                 output = sigmoid(np.dot(output,w)+b)
             return output
+        
+    def backPropogate(self):
         
     def getWeights(self):
         return self.Weights
